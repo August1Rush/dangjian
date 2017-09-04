@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input v-model="query">
+    <transition-group
+            name="ss"
+            tag="ul"
+            :css="false"
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:leave="leave"
+    >
+        <li
+                v-for="(item,index) in computedList"
+                :key="item.msg"
+                :data-index="index"
+        >
+            {{item.msg}}
+        </li>
+    </transition-group>
+</div>
+<script src="../../js/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script>
+    var ve= new Vue({
+        el:'#app',
+        data:{
+            query:'',
+            list:[
+                {msg:'Aj    WS'},
+                {msg:'S SFssf'},
+                {msg:'faW'},
+                {msg:'dSFF'},
+                {msg:'eSFAFA'},
+                {msg:'CAC'},
+                {msg:'gFAFA'}
+            ]
+        },
+        computed:{
+            computedList:function () {
+                var vm =this;
+                return this.list.filter(function (item) {
+                    return item.msg.toLocaleLowerCase().indexOf(vm.query.toLocaleLowerCase())!==-1
+                    //把数组转化成小写，然后判断存不存在,把存在的筛选出来
+                })
+            }
+        },
+        methods:{
+            beforeEnter:function (el) {
+                el.style.opacity=0;
+                el.style.height=0;
+            },
+            enter:function (el,done){
+
+
+                    Velocity(
+                        el,
+                        { opacity: 1, height: '1.6em' },
+                        { complete: done }
+                    )
+
+            },
+            leave: function (el, done) {
+//                var delay = el.dataset.index * 150;//只是设置延时的
+                setTimeout(function () {
+                    Velocity(
+                        el,
+                        { opacity: 0, height: 0 },
+                        { complete: done }
+                    )
+                }, 1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

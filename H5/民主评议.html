@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+    <link rel="stylesheet" href="../css/民主评议.css"/>
+    <link rel="stylesheet" href="../iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+</head>
+<body>
+<div class="bar bar-header head">
+    <a class="button icon-left ion-chevron-left button-clear button-light"href="党员找组织.html"></a>
+    <h1 class="title">掌上组织生活</h1>
+</div>
+<div class="center">
+    <a href="个人总结.html"><div class="zr z1">个人总结</div></a>
+    <a class="tiao"><div class="zr z2">民主评议</div></a>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $.ajax({
+        url: 'http://192.168.1.110:8081/hhdj/nationComment/judgeComment.do',
+        type: 'post',
+        data: {
+        },
+        headers: {
+            token: localStorage.getItem('token')
+        },
+
+        success: function (data) {
+            console.log(data);
+            console.log(data.tbCommentUser.commentId);
+            localStorage.setItem('comment_id',data.tbCommentUser.commentId);
+            if(data.tbComment.isOpen==1){
+                $('.tiao').attr('href','不用handbar民主评议内容.html');
+            }
+            else{
+                $('.tiao').attr('href','');
+                //这里需要添加一个无法跳转时候的提示,添加一个动画的div
+                /*$('.party-organization').append('<div class="block"></div>')
+                 $('.block').text('有正在进行的民族评议')
+                 $(".block").animate({top:'250px'})*/
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>

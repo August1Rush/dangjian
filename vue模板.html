@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:div="http://www.w3.org/1999/xlink">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-text="title"></div>
+    一次
+    <div v-bind:title="title">111</div>
+    <div :title="title">111</div>
+    <div v-text="title">111</div>
+    <div>{{html}}</div>
+    <div v-html="html"></div>
+    <div v-text="text"></div>
+    <div v-pre="text"></div>
+    <div v-on:click.self="divchang" style="background-color: red">
+        <!--self点击自己时才触发点击子元素无效相当于event.target-->
+        <input type="button" value="btn" v-on:click.stop="change">
+        <!--阻止冒泡发生-->
+    </div>
+    <div v-on:click.capture="divchang" style="background-color:black">
+        <input type="button" value="btn" v-on:click="change">
+    </div>
+    <!--capture事件变成捕获阶段-->
+    <a href="http://baidu.com" v-on:click.prevent="alert">baidu</a>
+    <div v-pre="">{{text}}</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+       data:{
+            title:"111",
+           html:"<span>文章内容</span>",
+            text:"使用{{}}，来显示"
+       },
+        created:function(){
+//            this.a();
+//            this.b();
+        },
+        methods:{
+            change:function () {
+                this.title="sfsf";
+                alert("input click")
+            },
+            divchang:function () {
+                this.title="aaa";
+                alert("div click")
+            },
+            alert:function () {
+                alert(2)
+            }
+        }
+    })
+</script>
+</body>
+</html>

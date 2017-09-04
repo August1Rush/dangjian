@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由钩子</title>
+</head>
+<style>
+    .red{
+        background-color:red;
+        height: 100px;
+    }
+    .yellow{
+        background-color:yellow;
+        height: 100px;
+    }
+    .blue{
+        background-color:rgba(111,111,111,0.5);;
+        height: 100px;
+    }
+</style>
+<body>
+<div id="app">
+    <router-view></router-view>
+    <router-link to="/red">红色</router-link>
+    <router-link to="/yellow/?id=55">黄色</router-link>
+    <!--<router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>-->
+    <router-link to="/blue">蓝色</router-link>
+
+    <!--<keep-alive> <router-view></router-view></keep-alive>-->
+</div>
+<template id="r">
+    <div class="red">
+        首页，不需要登录可以访问
+    </div>
+</template>
+<template id="y">
+    <div class="yellow">
+        我的页面,进入需要判断是否登录
+    </div>
+</template>
+<template id="b">
+    <div class="blue">
+        登录页面，登录成功后判断来源再跳转
+        <input type="text" v-model="user">
+        <input type="button" value="登录" @click="blue">
+        <!--<router-view></router-view>-->
+        <!--<router-link to="blue/info">info</router-link>-->
+        <!--<router-link to="/score">score</router-link>-->
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+//    var info={
+//        template:"<div>子路由info</div>"
+//    };
+//    var score={
+//        template:"<div>子路由score</div>"
+//    };
+    var Red={
+        template:"#r"
+    };
+    var Yellow={
+        template:"#y"
+
+//        data:function () {
+//            return {user:0}
+//        },
+//        poros:["title"],
+//        created:function () {
+//            alert(this.$route.query.id)
+//        },
+//        methods:{
+//            a:function () {
+//                this.user+=1
+//            }
+//        },
+//        watch:{//路径数据改变时运行如id
+//            user:function (newvalue,oldvalue) {
+//                console.log(this.user)
+//
+//            },
+//            title:function () {
+//
+//            },
+//            "$route":function () {
+//                if(this.$route.query.id){
+//                    console.log(this.$route.query.id+100)
+//                }
+//            }
+//        },
+//        activated:function () {
+//            console.log("activated");
+//            console.log(this.$route.query.id)
+//        },
+//        deactivated:function () {
+//            console.log("deactivated")
+//        }
+    };
+    var Blue={
+        template:"#b",
+        data:function () {
+            return{
+                user:""
+            }
+        },
+        methods:{
+            blue:function () {
+                localStorage.setItem('user',this.user);
+                if(this.$route.query.redirect){
+                    console.log(this.$route.query.redirect)
+                    this.$router.push(this.$route.query.redirect);
+                }else {
+                    this.$router.push("/red")
+                }
+            }
+        }
+    };
+    var routes=[
+        {
+
+            name:'red',
+            path:"/red",
+            component:Red
+        },
+        {
+            name:'yellow',
+            path:"/yellow",
+            component:Yellow,
+            meta:{
+                role:true
+            }
+        },
+        {
+            name:"blue",
+            path:"/blue",
+            component:Blue,
+//            children:[
+//                {
+//                    path:"info",
+//                    component:info
+//                },
+//                {
+//                    path:"/score",
+//                    component:score
+//                }
+//            ]
+        },
+        {
+            path:"/",component:Red
+        }
+    ];
+    var router=new VueRouter({
+        routes:routes
+    });
+    router.beforeEach(function (to, from, next) {
+        if(to.meta.role){
+            var user=localStorage.getItem("user");
+            if(user){
+                next();
+            }else {
+
+                next({
+                    path:'/blue',
+                    query:{
+                        redirect:to.fullPath
+                    }});
+
+
+            }
+        }else {next()}
+    });
+    var aa=new Vue({
+        router:router,
+        el:"#app"
+    })
+</script>
+</body>
+</html>

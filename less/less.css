@@ -1,0 +1,16 @@
+#page #header {
+  color: white;
+}
+#footer {
+  color: red;
+}
+@importing "aa";
+.a {
+  width: 10px;
+}
+#aa {
+  background-image: url("http://assets.fnord.com/images/bg.png");
+}
+.class {
+  filter: "ms:alwaysHasItsOwnSyntax.For.Stuff()";
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听函数</title>
+</head>
+<style>
+    .red{
+        background-color:red;
+        height: 100vh;
+    }
+    .yellow{
+        background-color:yellow;
+        height: 100vh;
+    }
+    .blue{
+        background-color:blue;;
+        height: 100vh;
+    }
+</style>
+<body>
+<div id="app">
+    <router-link to="/red">红色</router-link>
+    <router-link to="/yellow/?id=1">黄色</router-link>
+    <!--<router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>-->
+    <router-link :to="{name:'blue',params:{id:2,name:1}}">蓝色</router-link>
+    <!--<router-view></router-view>-->
+    <keep-alive> <router-view></router-view></keep-alive>
+</div>
+<template id="r">
+<div class="red">
+    <p><a href="#/yellow?id=1111">信息1</a></p>
+    <p><a href="#/yellow?id=2222">信息2</a></p>
+</div>
+
+
+</template>
+<template id="y">
+    <div class="yellow">
+        这里是黄色{{user}}
+        <button @click="a"></button>
+    </div>
+
+</template>
+<template id="b">
+    <div class="blue">这里是蓝色</div>
+</template>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var Red={
+        template:"#r"
+    };
+    var Yellow={
+        template:"#y",
+
+        data:function () {
+            return {user:0}
+        },
+        poros:["title"],
+        created:function () {
+            alert(this.$route.query.id)
+        },
+        methods:{
+            a:function () {
+               this.user+=1
+            }
+        },
+        watch:{//路径数据改变时运行如id
+            user:function (newvalue,oldvalue) {
+                console.log(this.user)
+
+            },
+            title:function () {
+
+            },
+            "$route":function () {
+                if(this.$route.query.id){
+                    console.log(this.$route.query.id+111)
+                }
+            }
+        },
+        activated:function () {
+            console.log("activated");
+            console.log(this.$route.query.id)
+        },
+        deactivated:function () {
+            console.log("deactivated")
+        }
+    };
+    var Blue={
+        template:"#b",
+        created:function () {
+            alert(this.$route.params.id)
+        }
+    };
+    var routes=[
+        {
+
+            name:'red',
+            path:"/red",
+            component:Red
+        },
+        {
+            name:'yellow',
+            path:"/yellow",
+            component:Yellow
+        },
+        {
+            name:"blue",
+            path:"/blue/:id/:name",
+            component:Blue
+        },
+        {
+            path:"/",component:Red
+        }
+    ];
+    var router=new VueRouter({
+        routes:routes
+    });
+    var aa=new Vue({
+        router:router,
+        el:"#app"
+    })
+</script>
+</body>
+</html>

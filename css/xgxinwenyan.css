@@ -1,0 +1,70 @@
+a{
+    color: inherit;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.head{
+    background-color:rgb(204,0,13);
+    position: relative;
+}
+.head h1{color: white}
+.button.icon-left.ion-chevron-left.button-clear.button-light{color: white}
+.scroll-content{overflow-y: auto}
+/*li img{width: 100px;*/
+    /*height: 75px;}*/
+/*.left,.you{display: inline-block}*/
+/*.you{vertical-align: top;*/
+/*position: relative}*/
+/*.you .xia{margin-top: 10px}*/
+/*li{display: flex}*/
+/*.yan,.xia{*/
+/*display: inline-block;*/
+/*}*/
+/*.yan{*/
+    /*position: absolute;*/
+    /*right: 0;*/
+/*}*/
+.li{
+    position: relative;
+    padding: 10px;
+  overflow: hidden;
+    border-bottom: 1px solid #cccccc;
+}
+.left{
+    position: absolute;
+    width: 80px;
+    height: 160px;
+}
+.left>img{
+    width: 70px;
+    height: 70px;
+}
+.you{
+    height: 70px;
+    margin-left: 90px;
+    position: relative;
+}
+.yan{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.top{
+    position: absolute;
+    top: 0;
+}
+.xia{
+    position: absolute;
+    bottom: 0;
+}
+.zhong{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+
+}
+.bar{
+    background-position: inherit ;
+}

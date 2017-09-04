@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<p v-show="seen">现在你看到我了</p><!--下载以后就好了-->
+    <span v-for="(a,index) in ti">{{a.text}}</span>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            seen:' ',
+            ti:[
+                {text:'你'},
+                {text:'是'},
+                {text:'猪'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

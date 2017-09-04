@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.fade-enter-active, .fade-leave-active{
+    transition: opacity 3s;
+}
+    .fade-enter, .fade-leave-to{
+        opacity: 0;
+    }
+</style>
+<body>
+<div class="app">
+    <button @click="show=!show">
+        切换
+    </button>
+    <transition name="fade">
+        <p v-if="show">你好</p>
+    </transition>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    var aa=new Vue({
+        el:".app",
+        data:{
+            show:true
+        }
+    })
+</script>
+
+</body>
+</html>

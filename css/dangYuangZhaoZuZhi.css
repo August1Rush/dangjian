@@ -1,0 +1,22 @@
+.flex{display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 20px;
+}
+.flex>div{
+    flex:0 0 33%;
+    margin-bottom: 30px;
+}
+.luxian img{
+    width: 100%
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.head{
+    border-bottom:none;
+}
+.flex>div img{
+    max-width: 70px;
+}

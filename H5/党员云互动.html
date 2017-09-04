@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+    <link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+    <link rel="stylesheet" href="../iconfont/iconfont.css"/>
+    <link rel="stylesheet" href="../css/党员云互动.css">
+</head>
+<body>
+<div class="bar bar-header head">
+    <a class="button icon-left ion-chevron-left button-clear button-light"href="党建首页.html"></a>
+
+    <h1 class="title">党员云互动</h1>
+</div>
+<div class="scroll-content has-header ">
+    <div id="aa">
+        <ul id="list"></ul>
+    </div>
+    <div class="zhong">没有更多数据</div>
+
+</div>
+<script id="entry-template" type="text/x-handlebars-template">
+    {{#each rows}}
+    <li class="li">
+        <a href="新闻内容.html?newsId={{newsId}}">
+            <div class="liang">
+                <img src="{{header}}" alt=""/>
+                <div class="ss">
+                    <div class="yi">{{username}}</div>
+                    <div class="er">{{currentTime}}</div>
+                </div>
+                <div class="ren">{{content}}</div>
+            </div>
+                <div class="r">
+                   <div class="re"></div>
+                    <!--<div class="re">党员互动</div>-->
+                    <div class="hui">回复</div>
+                </div>
+
+                <!--<div class="yan"><i class="icon iconfont icon-yanjing1"></i></div>-->
+
+        </a>
+    </li>
+    {{/each}}
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.0.10/handlebars.js"></script>
+<script>
+    var x = $("#entry-template").html();
+    var xx = Handlebars.compile(x);
+    $.ajax({
+        url: "http://192.168.1.110:8081/hhdj/forum/forumList.do",
+        type: "get",
+        headers:{token:localStorage.getItem('token')},
+        data: {},
+        success: function (data) {
+            console.log(data);
+            $("#list").html(xx(data));
+
+        }
+    });
+    $(".lala").click(function () {
+        $(".jia").css('display',"block")
+        }
+    );
+    $(".quxiao").click(function () {
+        $(".jia").css("display","none")
+    });
+//    $(".fabu").click(function () {
+//        if($("textarea").html()==0){
+//            alert(222)
+//        }
+//    })
+</script>
+<script>
+    //    var str='<a href=""><img src="{url}" alt=""/><div>{title}</div><div>{content}</div><div>{time}</div></a>';
+    //    $.ajax({
+    //        url:"http://192.168.8.116:8081/hhdj/news/newsList.do",
+    //        type:"get",
+    //        data:{page:1,rows:5,type:0},
+    //        success:function(data) {
+    //            console.log(data);
+    //            data.rows.forEach(function (item) {
+    //                var s =  str.replace(/\{url\}/,item.pic).replace(/\{title\}/,item.title).replace(/\{content\}/,item.content).replace(/\{time\}/,item.currentTime);
+    //                $("#aa").append(s)
+    //            })
+    //        }
+    //    })
+</script>
+</body>
+</html>

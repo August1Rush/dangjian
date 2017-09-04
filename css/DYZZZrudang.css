@@ -1,0 +1,21 @@
+.scroll-content.has-header h3{
+    text-align: center;
+}
+a{text-align: center;
+text-decoration: none;
+}
+a div{background-color: red;
+color: white;
+width:80%;
+    margin: auto;
+height: 40px;
+line-height: 40px;
+font-size: 20px}
+.scroll-content.has-header>div{
+    color: #cccccc;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+input{margin-right: 10px;
+    zoom: 180%;
+}

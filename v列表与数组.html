@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .divider{
+        background-color: #795da3;
+    }
+</style>
+<body>
+<!--数组-->
+<div class="app">
+    <ul>
+        <li v-for="item of items">
+            {{item.a}}
+        </li>
+        <!--of可以替代in，因为它更接近javascript语法-->
+        <li v-for="(item,index) in items">
+            {{index}}:{{item["a"]}}
+        </li>
+    </ul>
+    <div v-for="item of items">{{item}}</div>
+    <ul>
+        <template v-for="item in items">
+            <li>{{ item }}</li>
+            <li class="divider"></li>
+        </template>
+    </ul>
+    <!--遍历对象-->
+    <ul id="repeat-object" class="deme">
+        <li v-for="value in object">
+            {{value}}
+        </li>
+    </ul>
+    <div v-for="(value,key) in object">
+        {{key}}:{{value}}
+        <!--键值对形式-->
+    </div>
+    <div v-for="(value,key,index) in object">
+        {{index}}:{{key}}:{{value}}
+    </div>
+    <!--在整数范围遍历-->
+    <div v-for="n in 10">
+        <span>{{n}}</span>
+    </div>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:".app",
+        data:{
+            items:[
+                {a:1,b:3,c:5},
+                {a:2,b:4,c:6}
+                ],
+            object:{a:11,b:22,c:33,d:44}
+        }
+    })
+</script>
+</body>
+</html>

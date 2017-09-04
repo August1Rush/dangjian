@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <aac></aac>
+    <aab></aab>
+<my-component>
+</my-component>
+</div>
+
+<!--这样是无效的-->
+<table id="a">
+    <my></my>
+</table>
+
+<!--要改写成这样-->
+<table id="b">
+    <tr is="my"></tr>
+</table>
+<script src="../../js/vue.js"></script>
+<script>
+//    注册
+    Vue.component('my-component',{
+        template:'<div>你就是一个dsb</div>'
+
+    });
+Vue.component('my',{
+    template:'<div>这是我的</div>'
+
+});
+    var aac={template:'<div>今天周五</div>'};
+//    创建根实例
+    var app=new Vue({
+        el:"#app",
+        data:{
+
+        },
+//        局部注册
+        components:{
+            'aab':{template:'<div>明天才周六</div>'},
+            'aac':aac
+        }
+    });
+    var a=new Vue({
+        el:'#a',
+        data:{
+
+        }
+    });
+var b=new Vue({
+    el:'#b',
+    data:{
+
+    }
+})
+</script>
+</body>
+</html>

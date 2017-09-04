@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>Hello APP?</h1>
+    <P>
+        <router-link to="/foo">GO to FOO</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </P>
+    <router-view></router-view>
+<!--<a1></a1>-->
+</div>
+<!--<template id="a1">-->
+    <!--<div>ninini</div>-->
+<!--</template>-->
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    const FOO={template:"<div>今天不下雨</div>"};
+    const Bar={template:"<div>今天下雨</div>"};
+    const routers=[
+        {path:'/foo',component:FOO},
+        {path:'/bar',component:Bar}
+    ];
+    const router=new VueRouter({
+        routes:routers
+    });
+//    const app=new Vue({
+//        router:router
+//    }).$mount("#app");
+    const app =new Vue({
+        el:"#app",
+        router:router
+    })
+</script>
+</body>
+</html>

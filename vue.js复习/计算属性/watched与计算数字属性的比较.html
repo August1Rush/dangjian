@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+   <div> {{fullName}}</div>
+    <input type="text" v-model="firstName">
+    <div>{{firstName}}</div>
+</div>
+
+<script src="../../js/vue.js"></script>
+<script>
+    var app= new Vue({
+        el:'#app',
+        data:{
+           firstName:'Foo',
+            lasstName:'Bar',
+            fullName:'Foo Bar'
+        },
+        watch:{
+            firstName:function (val) {
+                alert(22)
+            },
+            lassName:function (val) {
+                this.fullName=this.firstNameL+''+val
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    name="张三";
+    age="李四";
+var obj={  name:"张三", age:"李四"};
+    function test(){
+        document.writeln(this);
+        document.writeln(this.name);
+        document.writeln(this.age);
+    }
+    test();
+    test.call(obj);
+function foo(a, b){
+    document.writeln(this.name);
+    document.writeln(a);
+    document.writeln(b);
+}
+foo.call(obj,12,true)
+</script>
+</body>
+</html>

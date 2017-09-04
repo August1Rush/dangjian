@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <input v-model="par">
+        <br>
+        <a1 v-bind:my-m="par" v-bind:oo="par"></a1>
+    </div>
+</div>
+<template id="a1">
+  <div>{{myM}}:{{oo}}
+      <div>{{myM}}:{{oo}}</div></div>
+
+    <!--<div>{{myG}}</div>-->
+</template>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            par:""
+        },
+        components:{
+            "a1":{
+                template:"#a1",
+                props:["myM","oo"]
+            }
+        }
+    });
+</script>
+</body>
+</html>

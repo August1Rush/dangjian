@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .red{
+        background-color:red;
+        height: 100vh;
+    }
+    .yellow{
+        background-color:yellow;
+        height: 100vh;
+    }
+    .blue{
+        background-color:blue;;
+        height: 100vh;
+    }
+</style>
+<body>
+<div id="app">
+    <router-link to="/red">红色</router-link>
+    <router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>
+    <!--<router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>-->
+    <router-link :to="{name:'blue',params:{id:2,name:1}}">蓝色</router-link>
+    <router-view></router-view>
+</div>
+<template id="r">
+    <div class="red">这里是红色喔<input type="text">
+        <input type="button" value="yellow" @click="goYellow">
+        <input type="button" value="blue" @click="goBlue"></div>
+
+</template>
+<template id="y">
+    <div class="yellow">
+        这里是黄色
+        <input type="button" value="back" @click="goBack">
+    </div>
+
+</template>
+<template id="b">
+    <div class="blue">这里是蓝色</div>
+</template>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var Red={
+        template:"#r",
+        methods:{
+            goYellow:function () {
+                this.$router.push({
+                    name:"yellow",query:{id:1000}})
+            },
+            goBlue:function () {
+                this.$router.push({name:"blue",params:{id:100,name:"1111"}})
+            }
+        }
+    };
+    var Yellow={
+        template:"#y",
+        created:function () {
+            alert(this.$route.query.id)
+        },
+        methods:{
+            goBack:function () {
+                this.$router.go(-1);
+            }
+        }
+    };
+    var Blue={
+        template:"#b",
+        created:function () {
+            alert(this.$route.params.id)
+        }
+    };
+    var routes=[
+        {
+
+            name:'red',
+            path:"/red",
+            component:Red
+        },
+        {
+            name:'yellow',
+            path:"/yellow",
+            component:Yellow
+        },
+        {
+            name:"blue",
+            path:"/blue/:id/:name",
+            component:Blue
+        },
+        {
+            path:"/",component:Red
+        }
+    ];
+    var router=new VueRouter({
+        routes:routes
+    });
+    var aa=new Vue({
+        router:router,
+        el:"#app"
+    })
+</script>
+</body>
+</html>

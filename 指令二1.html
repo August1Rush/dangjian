@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-if="type==1">AAA</div>
+    <div v-if="type==2">BBB</div>
+    <div v-show="type==1">ccc</div>
+    <div v-show="type==2">ddd</div>
+    <input type="button" value="type1" @click="changeType(1)">
+    <input type="button" value="type2" @click="changeType(2)">
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            type: 1,
+            test:true
+
+        },
+        methods:{
+            changeType:function(type){
+                this.type=type;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

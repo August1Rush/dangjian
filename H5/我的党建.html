@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+<link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+<link rel="stylesheet" href="../css/我的党建.css"/>
+<link rel="stylesheet" href="../iconfont/iconfont.css"/>
+
+<body>
+<div class="bar bar-header head" id="qu">
+    <h1 class="title">我的党建</h1>
+</div>
+<div class="scroll-content has-header has-tabs ">
+    <div class="red">
+        <img src="../img/头像.png" alt="" id="pc"/>
+
+        <div id="id">你还没有登录，请登录</div>
+    </div>
+    <a href="个人党建信息.html">
+        <div class="xinxi">
+            <div>
+                <img src="../img/个人信息.png" alt="" class="img1"/>
+                个人信息
+            </div>
+            <img src="../img/形状-7-拷贝-5@2x.png" alt="" class="img2"/>
+        </div>
+    </a>
+    <a href="个人积分.html">
+        <div class="xinxi">
+            <div>
+                <img src="../img/量化积分icon.png" alt="" class="img1"/>
+                <span>个人量化积分</span>
+            </div>
+            <img src="../img/形状-7-拷贝-5@2x.png" alt="" class="img2"/>
+        </div>
+    </a>
+    <a href="修改密码.html">
+        <div class="xinxi">
+            <div>
+                <img src="../img/修改密码icon@2x.png" alt="" class="img1"/>
+                <span>修改密码</span>
+            </div>
+            <img src="../img/形状-7-拷贝-5@2x.png" alt="" class="img2"/>
+        </div>
+    </a>
+    <a href="党费缴纳.html">
+        <div class="xinxi">
+            <div>
+                <img src="../img/icon3.png" alt="" class="img1"/>
+                <span>党费缴纳</span>
+            </div>
+            <img src="../img/形状-7-拷贝-5@2x.png" alt="" class="img2"/>
+        </div>
+    </a>
+    <div id="tc">退出登录</div>
+</div>
+<!--<div class="tabs  flex">-->
+<!--<a href="党建首页.html">-->
+<!--<img src="../img/党_grey.png" alt=""/>-->
+<!--<div>首页</div>-->
+<!--</a>-->
+<!--<a href="">-->
+<!--<img src="../img/消息_grey.png" alt=""/>-->
+<!--<div>通知早知道</div>-->
+<!--</a>-->
+<!--<a>-->
+<!--<img src="../img/会员_red.png" alt=""/>-->
+<!--<div>我的党建</div>-->
+<!--</a>-->
+<!--</div>-->
+<div class="tabs tabs-icon-top foot">
+    <a class="tab-item" href="党建首页.html">
+        <i class="icon iconfont icon-party"></i>
+        首页
+    </a>
+    <a class="tab-item" href="通知早知道.html">
+        <i class="icon iconfont icon-xinxi"></i>
+        通知早知道
+    </a>
+    <a class="tab-item redse">
+        <i class="icon iconfont icon-iconfonticozhuce"></i>
+        我的党建
+    </a>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $.ajax({
+        url:"http://192.168.1.110:8081/hhdj/user/userInfo.do",
+        type:"get",
+        headers:{token:localStorage.getItem('token')},
+        data: {},
+        success: function (data) {
+            console.log(data);
+//            $("#list").html(xx(data));
+            $("#pc").attr("src",data.data.header);
+            $("#id").html(data.data.username)
+
+        }
+    });
+
+    if(localStorage.getItem("token")!=""){
+        $("#tc").show()
+    }else {
+
+        $("#tc").hide()
+    }
+    $("#tc").click(function () {
+        localStorage.setItem("token","");
+        location.href="党建首页.html"
+    })
+//    $("#tc").click(function(){
+//
+//    })
+</script>
+</body>
+</html>

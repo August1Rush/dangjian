@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div v-ok="{color:'black',text:'hellow'}"></div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.directive('ok',function (el, binding) {
+//        el.innerText(binding.value.color);
+        console.log(binding.value.text);
+        el.innerHTML=JSON.stringify(binding.value)
+
+    });
+    new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

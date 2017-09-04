@@ -1,0 +1,57 @@
+body{
+    background-color: rgba(253,244,255,1);
+}
+.head{
+    border-bottom: black;
+}
+.beijing img{
+    width: 100%;
+    vertical-align: bottom;
+}
+.beijing div{
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    /*left: 0;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+ /*width: 200px;*/
+/*height: 200px;*/
+    /*margin: auto;*/
+    font-size: 20px;
+    color: white;
+}
+.beijing{
+    position: relative;
+}
+.mingxi{
+    padding: 10px;
+    font-size: 16px;
+    background-color: white;
+}
+.mingxi img{;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: white;
+    color:rgb(180,180,180) ;
+
+}
+.hui{
+    background-color:rgba(253,244,255,1);
+}
+.img2{
+    float: right;
+}

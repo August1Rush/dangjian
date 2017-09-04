@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.mixin({
+        created:function (){
+            var myOption=this.$options.ok
+            ;
+            if(myOption){
+                console.log(myOption)
+            }
+        }
+    });
+    new Vue({
+        myOption:'hello!',
+        ok:'ok!'
+    })
+</script>
+</body>
+</html>

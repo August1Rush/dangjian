@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h1 v-if="ok">每天早上八点起床</h1>
+    <h1 v-else>
+        每天吃三顿
+    </h1>
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+    <div v-if="type>2">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </div>
+    <a href="" @click.prevent="type=1">1</a>
+    <a href="" @click.prevent="type=2">2</a>
+    <a href="" @click.prevent="type=3">3</a>
+    <a href="" @click.prevent="type=4">4</a>
+    <a href="" @click.prevent="type=5">5</a>
+    <div v-if="type==1" style="background-color: #007aff">标题1</div>
+    <div v-if="type==2" style="background-color:red">标题2</div>
+    <div v-if="type==3" style="background-color: #7d2717">标题3</div>
+    <div v-if="type==4" style="background-color:yellow">标题4</div>
+    <div v-if="type==5" style="background-color: #795da3">辩题5</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+    el:"#app",
+    data:{
+        ok:false,
+        type:1
+
+    }
+})
+</script>
+
+
+</body>
+</html>

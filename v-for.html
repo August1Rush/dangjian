@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in list">
+            {{item}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in list">
+            {{index}}:{{item}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(value,key,index) in obj">
+           {{value}}:{{key}}:{{index}}
+        </li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:"",
+            obj:{name:"a",age:11,address:"bj"}
+        },
+        created:function (){
+            var _this=this;
+            $.ajax({
+                url: "a.json",
+                type: "get",
+//                headers:{token:localStorage.getItem('token')},
+                data: {
+//                    newsId:get('newsId')
+                },
+                success: function (data) {
+                    console.log(data);
+                   _this.list=data
+
+
+                }
+            })
+//            var xhr=new XMLHttpRequest();
+//            xhr.open("get","a.json");
+//            var _this=this;
+////            xhr.onreadystatechange=function () {
+////                if(xhr.status==200&&xhr.readyState==4){
+////                    var data=JSON.parse(xhr.responseText);
+////                    _this.list=data;
+////                    console.log(data)
+////                }
+////            }
+//            xhr.onload=function () {
+//                if(xhr.status==200){
+//                    var data=JSON.parse(xhr.responseText);
+//                    _this.list=data;
+//                    console.log(data)
+//                }
+//            };
+//            xhr.send();
+////            event.preventDefault();
+
+        }
+    })
+</script>
+</body>
+</html>

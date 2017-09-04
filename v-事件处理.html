@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+<button @click="a1+=1">
+{{a1}}
+</button>
+    <button @click="greet">Grett
+    </button>
+    <button @click="say('hi')">say hi</button>
+    <button @click="say('what')"> say what</button>
+    <a @click="warn('FORM',$ecent)">Sumit</a>
+    <input type="text" @keyup.left="greet2">点击加回车时触发</input>
+</div>
+<script src="js/vue.js"></script>
+<script>
+
+    var a=new Vue({
+        el:".app",
+        data:{
+            a1:1
+
+        },
+        methods:{
+            greet:function (event) {
+                alert("hello"+this.a1+"!");
+                if(event){
+                    alert(event.target.tagName)
+                }
+            },
+            say:function (message) {
+                alert(message)
+            },
+            warn:function (message,event){
+                //现在我们可以访问原生事件对象
+                if(event) event.preventDefault();
+                alert(event)
+
+            },
+            greet2:function () {
+                alert(222)
+            }
+        }
+    });
+//    a.greet()//直接调用
+</script>
+</body>
+</html>

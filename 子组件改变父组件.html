@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="app">
+    <div>
+        <pre>
+            .stop:调用stopPropagation()
+            .prevent:preventDefault()
+            .capture:添加事件侦听器时使用事件捕获模式
+            .self:只当事件时从从元素本身触发是才触发回调
+            .once:点击事件将只会触发一次
+        </pre>
+    </div>
+
+    <!--阻止超链接默认行为-->
+    <div>
+        <a href="http://www.baidu.com" @click.prevent="aa">百度</a>
+    </div>
+
+</div>
+
+<script>
+    new Vue({
+        el:'.app',
+        data:{
+            title:''
+        },
+        methods:{
+            show:function (type) {
+                this.title=type+'page';
+            },
+            aa:function (nt) {
+                alert( nt.target.href)
+            }
+        }
+    })
+</script>
+</body>
+</html>

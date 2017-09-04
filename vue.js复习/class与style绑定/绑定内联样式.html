@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<div :style="{color:a1,fontSize:size +'px'}">sss</div><!--不能使用foot-sizex写法，需改成驼峰写法-->
+    <div :style="{color:a1,'font-size':size +'px'}">bbb</div><!--可以加引号使用原来foot-size写法-->
+    <div :style="style">isisis</div>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            a1:'red',
+            size:31,
+            style:{
+                color:'red',
+                fontSize:'30px'
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

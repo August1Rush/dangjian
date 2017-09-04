@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .aa{
+        width: 200px;
+        height: 200px;
+        background-color: rosybrown;
+    }
+</style>
+<body>
+<div id="app">
+    <button v-on:click="aa += 1">{{aa}}</button>
+    <p>事件发生了{{aa}}次</p>
+    <div @click="ab">你怎么今天还没睡醒呀</div>
+    <input type="text"  @keyup.enter="ab">
+    <div @keyup.enter="ab" class="aa">ssss</div>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app= new Vue({
+        el:'#app',
+        data:{
+            aa:0
+        },
+        methods:{
+            ab:function (event) {
+                alert('hello'+this.aa+'!');
+                if(event){
+                    alert(event.target.tagName)
+                }
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

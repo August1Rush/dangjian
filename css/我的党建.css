@@ -1,0 +1,69 @@
+#qu{
+    border:none;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+.head{
+    background-color: rgb(204,0,13);
+    font-size: 20px;
+    border-bottom: 1px solid rgb(212,26,43);
+    position: relative;
+}
+
+.red{
+    background-color: rgb(204,0,13);
+    text-align: center;
+    /*font-size: 18px;*/
+    color: white;
+    padding:30px;
+    font-size: 12px;
+}
+.red>img{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.xinxi{
+padding: 10px;
+    margin:auto;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    justify-content: space-between;
+align-items: center;
+}
+
+.img1{
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+.img2{
+    width: 10px;
+    height: 10px;
+}
+.flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.icon.iconfont{
+    font-size: 20px;
+    padding-top: 10px;
+}
+.redse{
+    color: red;
+}
+#tc{
+    width: 90%;
+    margin: 40px auto;
+    background-color:rgb(236,41,43);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 5px;
+}

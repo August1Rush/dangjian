@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .c{
+        font-size: 30px;
+    }
+    .a1{
+        background-color: #007aff;
+    }
+    .b1{
+        width: 300px;
+        height: 200px;
+    }
+</style>
+<body>
+<div id="app">
+    <div class="c" v-bind:class="{a1:isa,b1:isb}">你好</div><!--可以和class共存-->
+    <div :class="a">hello</div><!--可以直接传对象-->
+    <div :class="[c1,b1]">很高兴认识你</div>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            isa:true,
+            isb:true,
+            a:{
+                a1:true,
+                b1:true,
+                c:false
+            },
+            c1:'c',
+            b1:'b1'
+        }
+    })
+</script>
+</body>
+</html>

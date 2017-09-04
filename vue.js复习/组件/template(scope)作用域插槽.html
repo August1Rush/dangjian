@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<div class="parent">
+    <child>
+        <template scope="props">
+            <span>
+            我来自父组件
+            </span>
+            <span>
+                {{props.text}}
+            </span>
+        </template>
+    </child>
+
+    <my-awesome-list :items="items">
+        <!-- 作用域插槽也可以是具名的 -->
+        <template slot="item" scope="props">
+            <li class="my-fancy-item">{{ props.text }}</li>
+        </template>
+    </my-awesome-list>
+
+</div>
+</div>
+<template id="child">
+    <div class="child">
+        <slot text="你好我是一个子组件"></slot>
+    </div>
+</template>
+<template id="ab">
+    <div>
+        <slot text="我是一个子组件"></slot>
+        <ul>
+            <slot name="item"
+                  v-for="item in items"
+                  :text="item.text">
+
+            </slot>
+        </ul>
+    </div>
+
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+    Vue.component("child",{
+        template:"#child",
+    });
+    Vue.component('my-awesome-list',{
+        template:'#ab',
+        props:['items']
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+            items:
+                [
+                    {text:1},
+                    {text:12}
+                ]
+
+
+
+        }
+    })
+</script>
+</body>
+</html>

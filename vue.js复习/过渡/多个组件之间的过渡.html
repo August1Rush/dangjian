@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .aa1-enter-active,.aa1-leave-active{
+        transition: opacity 1s ease;
+    }
+    .aa1-enter,.aa1-leave-to{
+        opacity: 0;
+    }
+</style>
+<body>
+<div id="app">
+    <div>
+    <button @click="a1">a1</button>
+    <button @click="aa">a2</button>
+        <transition name="aa1" mode="out-in">
+            <component :is="a2"></component>
+        </transition>
+
+    </div>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var ve=new Vue({
+        el:"#app",
+        data:{
+            a2:'v-a2'
+        },
+        components:{
+            'v-a1':{
+                template:'<div>这是a1组件</div>'
+            },
+            'v-a2':{
+                template:"<div>这是a2组件</div>"
+            }
+        },
+        methods:{
+            a1:function () {
+                this.a2='v-a1'
+            },
+            aa:function () {
+                this.a2='v-a2'
+            }
+        }
+    })
+</script>
+</body>
+</html>

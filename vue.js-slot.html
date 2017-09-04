@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="a">
+
+    <a1>
+        <h1 slot="footer">这里可能是一个页面标题</h1>
+
+        <p>内容1</p>
+        <p>内容2</p>
+
+        <p slot="header">这里有一些联系信息</p>
+    </a1>
+    <c1 :items="items">
+        <template slot="item" scope="props">
+            <li class="my-fancy-item">{{props.text}}</li>
+        </template>
+    </c1>
+</div>
+<div id="b">
+ <b1>
+     <template scope="props">
+         <span>hello from parent</span>
+         <div>{{props.text}}</div>
+     </template>
+ </b1>
+</div>
+<template id="a1">
+    <div class="aa">
+        <header>
+            <slot name="header"></slot>
+        </header>
+        <main>
+            <slot></slot>
+        </main>
+        <footer>
+            <slot name="footer"></slot>
+        </footer>
+    </div>
+</template>
+<template id="b1">
+<div class="child">
+    <slot text="hello from child"></slot>
+</div>
+</template>
+<template id="c1">
+
+</template>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component("a1",{
+        template:"#a1"
+    });
+    Vue.component("b1",{
+        template:"#b1"
+    });
+    Vue.component("c1",{
+        template:"#c1",
+        props:["items"]
+    });
+    new Vue({
+        el:("#a"),
+        data:{
+            items:[
+                {text:"这是作用域1"},
+                {text:"这是作用域2"},
+                {text:"这是作用域3"}
+            ]
+        }
+    });
+    new Vue({
+        el:("#b")
+    })
+</script>
+</body>
+</html>

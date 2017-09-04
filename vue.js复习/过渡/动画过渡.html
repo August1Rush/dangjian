@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .cc{
+        background-color: hotpink;
+        width: 50px;
+        height: 50px;
+    }
+    .sss{
+        width: 40px;height: 40px;
+        background-color: red;
+    }
+    .ss-enter-active{
+        animation: ss-in 12s;
+    }
+    .ss-leave-active{
+        animation: ss-in 12s reverse;
+    }
+    @keyframes ss-in {
+        0%{
+            transform: scale(0);
+        }
+        50%{
+            transform: scale(1.5);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+</style>
+<body>
+<div id="app">
+<button @click="show=!show" class="cc"></button>
+    <transition name="ss" :duration="1000">
+        <div v-if="show" class="sss">
+            你好
+        </div>
+    </transition>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var vue=new Vue({
+        el:'#app',
+        data:{
+            show:true
+        }
+    })
+</script>
+</body>
+</html>

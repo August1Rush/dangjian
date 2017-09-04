@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input v-model="parent">
+    <child v-bind:aa="parent" message="hello" v-bind:bb="1">
+        <p>你好</p>
+    </child>
+    <!--<child message="hello"></child>-->
+</div>
+<template id="child">
+    <div>{{message}} <div>{{aa}}:{{bb}}+{{counter1}}</div>
+        <slot></slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        components:{
+            "child":{
+                props:["message","aa", "bb","counter1"],
+                template:"#child",
+                data:function () {
+                    return{
+                        counter:this.counter1
+                    }
+                }
+            }
+        },
+        data:{
+            parent:"",
+            "1":"ww",
+            message:"你好"
+        }
+
+
+    })
+</script>
+</body>
+</html>

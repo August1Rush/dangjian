@@ -1,0 +1,190 @@
+<template>
+    <section>
+        <div class="page">
+            <div class="header"><img src="../assets/ico.png" alt="" class="left"></div>
+            <div class="xtdl">系统登录</div>
+
+            <el-form :model="user" :rules="rules" ref="loginForm" class="demo-ruleForm" :label-position="labelPosition">
+                <el-form-item prop="o">
+                    <el-input type="text" v-model="user.username" auto-complete="off" placeholder="账号"></el-input>
+                </el-form-item>
+                <el-form-item prop="pass">
+                    <el-input type="password" v-model="user.password" auto-complete="off" placeholder="密码"></el-input>
+                </el-form-item>
+                <el-form-item prop="checkPass">
+                    <el-col :span="16">
+                        <el-input placeholder="验证码" v-model="user.checkcode" class="yanzheng" auto-complete="off"></el-input>
+                    </el-col>
+                    <el-col :span="8">
+                        <img :src="codeUrl" alt="" @click="changimg">
+                    </el-col>
+                </el-form-item>
+                <el-form-item >
+                    <div class="denglu" @click="login1">登录</div>
+                </el-form-item>
+            </el-form>
+        </div>
+    </section>
+    <!--<div class="page">-->
+    <!--<div class="header"><img src="../assets/ico.png" alt="" class="left"></div>-->
+    <!---->
+    <!--<el-input placeholder="账号" v-model="username" class="e"></el-input>-->
+    <!--<el-input placeholder="密码" v-model="password" type="password" class="e"></el-input>-->
+    <!--<el-row>-->
+    <!---->
+    <!--</el-row>-->
+    <!--<div class="denglu" @click="login">登录</div>-->
+    <!--&lt;!&ndash;<input type="button" value="login" @click="login">&ndash;&gt;-->
+
+    <!--</div>-->
+</template>
+<script>
+    import axios from "axios"
+    axios.defaults.withCredentials=true;
+    import {checkCodeUrl,login} from '../api/api'
+    export default{
+        data:function ()
+        {
+            return {
+                labelPosition:"top",
+                codeUrl:checkCodeUrl,
+                user: {
+                    username: '',
+                    password: '',
+                    checkcode:''
+                },
+                rules: {
+                    username:[
+                        {required:true,message:'请输入账号',trigger:'blur'}
+                    ],
+                    password: [
+                        {required:true,message:'请输入密码',trigger:'blur' }
+                    ],
+                    checkcode: [
+                        {required:true,message:'请输入验证码',trigger:'blur'  }
+                    ],
+                }
+            }
+        },
+
+        methods:{
+            changimg(){
+                this.codeUrl=this.codeUrl+"?"+Date.now();
+                console.log(this.codeUrl)
+            },
+            login1(ev) {
+                var _this = this;
+                this.$refs.loginForm.validate(function(valid){
+                    if (valid) {
+                        _this.logining = true;
+                        login(
+                            {username:_this.user.username,password:_this.user.password,checkcode:_this.user.checkcode}
+                        ).then(function (res){
+                            console.log(res);
+                            if(res.data&&res.data.code==1){
+                                _this.$router.push('/home')
+                            }else {
+                                _this.$message(
+                                    {
+                                        message:res.data.msg,
+                                        type:'error'}
+                                )
+                            }
+
+                        }).catch(function () {
+                            _this.logining=false;
+                            _this.$message({
+                                message:'登录失败',
+                                type:'error'
+                            })
+                        })
+                    }else{
+                        _this.$message(
+                            {message: '验证失败',
+                                type: 'error'});
+                        return false;
+                    }
+                });
+            },
+//
+//        login1(){
+//
+//            axios.get("http://192.168.1.110:8081/hhdj/login/login.do",{
+//                params:{
+//                    username:this.ruleForm2.o,
+//                    password:this.ruleForm2.pass,
+//                    checkcode:this.ruleForm2.checkPass
+//                }
+//            }).then(function(data){
+//                console.log(data);
+//              if(data.data.code==1){
+//                _this.$router.push("/home")
+//
+//              }
+//
+//            })
+//        },
+//    submitForm(formName) {
+//      this.$refs[formName].validate((valid) => {
+//        if (valid) {
+//          this.getData()
+//        } else {
+//          console.log('error submit!!');
+//          return false;
+//        }
+//      });
+//    }
+        }
+    }
+</script>
+<style scoped="scoped">
+    *{
+        box-sizing: border-box;
+    }
+    .page {
+        width: 420px;
+        height: 420px;
+        position: fixed;
+        top:0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        box-shadow:0 0 10px #CCC;
+    }
+    .page .header{
+        background-color:rgb(32,160,255);
+        text-align: left;
+        padding: 10px;
+    }
+    .page .header .left{
+        height: 40px;
+    }
+    .xtdl{
+        text-align:center;
+        font-size: 16px;
+        padding: 20px;
+        font-weight: bolder;
+
+    }
+    .denglu{
+        background-color: rgb(32,160,255);
+        height:33px;
+        line-height: 33px;
+        border-radius: 5px;
+        color:white;
+        width: 85%;
+        margin: auto;
+    }
+    .el-row{
+        text-align: right;
+        background-color: red;
+        width: 85%;
+        margin: 10px auto;
+        /*margin: auto;*/
+    }
+    .e{
+        width: 85%;
+        margin: 10px auto;
+    }
+</style>

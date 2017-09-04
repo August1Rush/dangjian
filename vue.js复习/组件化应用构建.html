@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <!--现在我们为每个 zujian 提供代办项对象代办项对象是变量，即其内容可以使动态的。我们也需
+        为每个组件提供一个'key'，晚些时候我们会做个解释。-->
+        <zujian
+                v-for="item in gg"
+                :todo="item"
+                :key="item.id"
+        >
+
+
+        </zujian>
+    </ol>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("zujian",{
+        template:'<li>{{todo.text}}</li>',
+        props:['todo']
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+            gg:[
+                {
+                    id:0,text:'蔬菜'
+                },
+                {
+                id:1,text:'奶酪'
+                },
+                {
+                    id:2,text:'随便其他东西'
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

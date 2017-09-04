@@ -1,0 +1,25 @@
+a{
+    text-decoration: none;
+}
+form .text{display:inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+    /*background-color: red;*/
+    font-size: 18px;
+}
+form>div{margin:10px}
+form>div>div{text-align: right;
+display: inline-block;
+width: 100px;}
+form div{font-size: 18px}
+.shangchuang{width: 70%;
+    margin:auto;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}

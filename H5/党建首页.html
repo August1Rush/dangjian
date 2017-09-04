@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+<link rel="stylesheet" href="../css/dj首页.css"/>
+<link rel="stylesheet" href="../iconfont/iconfont.css"/>
+<body>
+<div class="bar bar-header bar-color head">
+        <a class="button button-clear">
+            <img src="../img/logo.png" alt="" class="img"/>
+        </a>
+        <a class="button button-clear button-positive yc" href="党建登录.html">登录</a>
+    </div>
+<div class="scroll-content has-tabs has-header ">
+    <!--<div class="swiper-container">-->
+        <!--<div class="swiper-wrapper">-->
+            <!--<div class="swiper-slide"><img src="../img/banner.png" alt=""/></div>-->
+            <!--<div class="swiper-slide"><img src="../img/banner.png" alt=""/></div>-->
+            <!--<div class="swiper-slide"><img src="../img/banner.png" alt=""/></div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 如果需要分页器 &ndash;&gt;-->
+        <!--<div class="swiper-pagination"></div>-->
+        <!--&lt;!&ndash; 如果需要滚动条 &ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="swiper-scrollbar"></div>&ndash;&gt;-->
+    <!--</div>-->
+    <div class="swiper-container slide-img">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../img/banner.png" alt=""></div>
+            <div class="swiper-slide"><img src="../img/banner.png" alt=""></div>
+            <div class="swiper-slide"><img src="../img/banner.png" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+<!--<div class="xinwen"><img src="../img/要闻icon.png" alt=""/><span>习近平：加强党对金融工作的领导刘云山出席</span></div>-->
+<div class="daohan">
+    <div class="row">
+        <div class="col-33">
+            <a href="信工新闻眼.html">
+            <img src="../img/icon_01.png" alt=""/>
+                <div>信工新闻眼</div>
+            </a>
+        </div>
+        <div class="col-33">
+            <a href="党员找组织.html">
+                <img src="../img/icon_02.png" alt=""/>
+                <div>党员与组织</div>
+            </a>
+        </div>
+        <div class="col-33">
+            <a href="党员云互动.html">
+                <img src="../img/icon_03.png" alt=""/>
+                <div>党员云互动</div>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-33">
+            <a href="党建一点通.html">
+                <img src="../img/icon_04.png" alt=""/>
+                <div>党建一点通</div>
+            </a>
+        </div>
+        <div class="col-33">
+            <a href="党员风采录.html">
+                <img src="../img/icon_05.png" alt=""/>
+            <div>党员风采录</div>
+            </a>
+        </div>
+        <div class="col-33"><a href="dangjiandashijain.html">
+            <img src="../img/icon_06.png" alt=""/>
+            <div>党史上的今天</div>
+        </a>
+        </div>
+    </div>
+</div>
+<div class="shenru"><img src="../img/banner01.png" alt=""/></div>
+<div class="fenge">
+    <img src="../img/专栏.png" alt=""/>
+    <div class="flex">
+        <a href="随时随地学.html" class="a"></a>
+        <a href="随时随地拍.html " class="a"></a>
+        <a href="两学一做讨论.html" class="a"></a>
+        <a href="两学一做在路上.html" class="a"></a>
+    </div>
+</div>
+    </div>
+<div class="tabs tabs-icon-top foot">
+    <a class="tab-item" href="党建首页.html">
+        <i class="icon iconfont icon-party"></i>
+        首页
+    </a>
+    <a class="tab-item" href="通知早知道.html">
+        <i class=" icon-xinxi icon iconfont"></i>
+        通知早知道
+    </a>
+    <a class="tab-item redse" href="我的党建.html">
+        <i class="icon iconfont icon-iconfonticozhuce"></i>
+        我的党建
+    </a>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="../swiper/js/swiper.min.js"></script>
+<script>
+//    var mySwiper = new Swiper('.swiper-container', {
+//        loop: true,
+//
+//        // 如果需要分页器
+//        pagination: '.swiper-pagination'
+//        // 如果需要滚动条
+////        scrollbar: '.swiper-scrollbar',
+//    })
+var mySwiper = new Swiper('.swiper-container',{
+    autoplay : 5000,
+    /*autoplayDisableOnInteraction : false,*/
+    pagination : '.swiper-pagination',
+    paginationType : 'bullets'
+
+});
+if(localStorage.getItem("token")!=""){
+    $(".yc").hide()
+}else {
+    $(".yc").show()
+}
+</script>
+<script>
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+<link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+<link rel="stylesheet" href="../iconfont/iconfont.css"/>
+<link rel="stylesheet" href="../css/随时随地拍.css"/>
+<body>
+<div class="bar bar-header head">
+    <a class="button icon-left ion-chevron-left button-clear button-light" href="党建首页.html"></a>
+    <h1 class="title">随时随地拍</h1>
+</div>
+<div class="scroll-content has-header ">
+<div id="flex"></div>
+    <div class="zhong">没有更多数据</div>
+</div>
+<script id="entry-template" type="text/x-handlebars-template">
+    {{#each rows}}
+    <div><a href="随时随地拍内容.html?newsId={{newsId}}"><img src="{{pic}}" alt=""/><div>{{title}}</div></a></div>
+    {{/each}}
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.0.10/handlebars.js"></script>
+<script>
+    var x = $("#entry-template").html();
+    var xx = Handlebars.compile(x);
+    $.ajax({
+        url: "http://192.168.1.110:8081/hhdj/news/newsList.do?",
+        type: "get",
+        headers:{token:localStorage.getItem('token')},
+        data: {page: 1, rows: 6, type: 7},
+        success: function (data) {
+            console.log(data);
+            $("#flex").html(xx(data));
+
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@var: red;
+
+#page {
+  @var: white;
+  #header {
+    color: @var; // white
+  }
+}
+
+#footer {
+  color: @var; // red
+}
+@importing "aa";
+@import "aa.less";
+@base-url: "http://assets.fnord.com";
+#aa{
+background-image: url("@{base-url}/images/bg.png");}
+.class {
+  filter: "ms:alwaysHasItsOwnSyntax.For.Stuff()";
+}
+@str: "hello";
+@var1: ~`"@{str}".toUpperCase() + '!'`;
+.aa{@var1}

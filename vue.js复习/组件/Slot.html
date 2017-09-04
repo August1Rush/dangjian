@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>我是父组件标题</h1>
+<a1>
+    <div>我是分发的内容</div>
+    <div>我在则slot不能显示</div>
+</a1>
+</div>
+<template id="a1">
+    <div>
+       <h2>我是子组件</h2>
+        <slot>
+            只有在没有分发的内容时才会显示。
+        </slot>
+    </div>
+
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+
+    Vue.component("a1",{
+        template:"#a1"
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

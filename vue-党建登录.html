@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" name="id_card" v-model="id_card">
+    <input type="password" name="password" v-model="password">
+    <input type="button" @click="change" value="提交">
+    <div v-show="username">用户名不能为空</div>
+    <div>{{score}}</div>
+    <div>{{user}}</div>
+</div>
+<script src="js/vue.js"></script>
+<!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>-->
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            id_card:"",
+            password:"",
+            username:false,
+            user:{}
+
+        },
+//        created:function (){
+//
+//                },
+        methods:{
+            change:function () {
+                if (!this.id_card) {
+                    this.username = true;
+                    return;
+                }
+                this.username = false;
+                var xhr=new XMLHttpRequest();
+                xhr.open("post","http://192.168.1.110:8081/hhdj/user/userLogin.do");
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                xhr.responseType="json";
+                var _this=this;
+                xhr.onload=function () {
+                    if(xhr.status==200){
+                        console.log(xhr.response);
+                        _this.user=xhr.response.data;
+
+//                        if(xhr.response.code==1){
+//                            console.log(xhr.response);
+//                            localStorage.setItem("token",xhr.response.token);
+//                            console.log(localStorage.getItem("token",xhr.response.token));
+//                            window.location.href="H5/我的党建.html"
+//                        }
+                    }
+                };
+                xhr.send('id_card='+this.id_card+"&"+"password="+this.password);
+
+            }
+        },
+        computed: {
+//            username:function() {
+//                //n行逻辑，return不能为空
+//                return !this.id_card
+//            },
+            score:function () {
+                if(this.user.totalScore){
+                    return this.user.totalScore * 10
+                }
+                else {return 0}
+            }
+        }
+            })
+</script>
+</body>
+</html>

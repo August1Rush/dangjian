@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="hello">
+<child mess-age="hello!"></child>
+    <child :mess-age="hello"></child>
+    <child mess-age="1"></child>
+    <child :size1="size"></child>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    Vue.component('child',{
+//        声明props
+        props:['messAge','size1'],
+        template:'<div>{{messAge}}{{size1}}:{{aaa}}</div>',
+        computed:{
+            aaa:function () {
+                return this.size1-100
+            }
+        }
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+           hello:'父组件传递数据成功',
+//            myessage:"要转化成驼峰写法"
+            size:1212
+
+
+        }
+    })
+</script>
+</body>
+</html>

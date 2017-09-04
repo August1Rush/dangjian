@@ -1,0 +1,14 @@
+.zr{
+    width: 50%;
+    margin:auto;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.center{
+    margin: 40% auto;
+}

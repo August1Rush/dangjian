@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+<!--动态选项，用v-for渲染-->
+    <select v-model="selected">
+        <option v-for="option in options" :value="option.text">
+            {{option.text}}
+        </option>
+    </select>
+    <div>Selected:{{selected}}</div>
+    <!--绑定value-->
+    <!--复选框-->
+    <input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+    <div>toggle:{{toggle}}</div>
+    <!--true-value用于替换true-->
+    <!--单选按钮-->
+    <input type="radio" v-model="pick" v-bind:value="ab">
+    <div>pick:{{pick}}</div>
+    <!--选择列表设置-->
+    <select v-model="selected1">
+        <option v-bind:value="{number:123}">123</option>
+    </select>
+    <div>selected:{{selected1}}</div>
+
+
+    <!--number用法-->
+    <input v-model.number="age" type="number">
+    <div>{{age}}</div>
+    <input v-model.lazy="msg" >
+    <div>{{msg}}</div>
+    <input v-model.input="msg1" >
+    <div>{{msg1}}</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:".app",
+        data:{
+            selected:"A",
+            options:[
+                {text:'one',value:'A'},
+                {text:'two',value:'B'},
+                {text:'three',value:'c'}
+            ],
+            a:"a",
+            b:"b",
+            ab:"lala",
+            toggle:"",
+            pick:"",
+            selected1:"",
+            age:"",
+            msg:"",
+            msg1:""
+
+//            number:"hh"
+
+
+
+
+            
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+<link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+<link rel="stylesheet" href="../css/个人党建信息.css"/>
+<body>
+<div class="bar bar-header head">
+    <a class="button icon-left ion-chevron-left button-clear button-light" href="我的党建.html"></a>
+    <h1 class="title">个人党建信息</h1>
+    <button class="button button-clear button-positive"id="bj">编辑</button>
+</div>
+<div class="scroll-content has-header ">
+    <div class="list">
+        <form action="" id="form">
+        <div class="touxiang">
+        <span>头像</span>
+            <img src="../img/头像.png" alt="" id="huan"/>
+        </div>
+        <!--<label class="item item-input">-->
+            <!--<span class="input-label">头像</span>-->
+            <!--<img src="../img/头像.png" alt=""/>-->
+        <!--</label>-->
+        <label class="item item-input">
+            <span class="input-label">姓名</span>
+            <input type="text" value="王老师" name="username">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">身份证</span>
+            <input type="text" value="1008611">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">家庭住址</span>
+            <input type="text" value="1111111112222222211111" name="hometown">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">工作地址</span>
+            <input type="text" value="" name="address">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">民族</span>
+            <input type="text" value="" name="nation">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">微信号</span>
+            <input type="text" value="">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">qq号</span>
+            <input type="text" value="" name="qqNum">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">性别</span>
+            <input type="text" value="女">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">最高学历</span>
+            <input type="text" value="本科" name="education">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">职称</span>
+            <input type="text" value="教授">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">薪资水平</span>
+            <input type="text" value="1800" name="salary">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">入党时间</span>
+            <input type="text" value="2012-12-01" name="joinPartyTime">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">党费最后缴纳时间</span>
+            <input type="text" value="2018-12-01" name="lastPayTime">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">当前身份</span>
+            <input type="text" value="正式党员" name="partyIdentity">
+        </label>
+
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <input type="file" class="none"/>
+    </div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+            $("#huan").click(function () {
+                $("input[type=file]").click();
+            });
+
+            $("input[type=file]").change(function(){
+                var file=this.files[0];
+                var fr=new FileReader();
+                fr.readAsDataURL(file);
+                fr.onload=function(){
+                    $("#huan").attr("src",this.result)
+
+                }
+            });
+            $.ajax({
+                url:"http://192.168.1.110:8081/hhdj/user/userInfo.do",
+                type:"get",
+                headers:{token:localStorage.getItem('token')},
+                data: {},
+                success: function (data) {
+                    console.log(data);
+//            $("#list").html(xx(data));
+                    $("img").eq(0).attr("src",data.data.header);
+                    $("input").eq(0).val(data.data.username);
+                    $("input").eq(1).val(data.data.idCard);
+                    $("input").eq(3).val(data.data.address);
+                    $("input").eq(2).val(data.data.hometown);
+                    $("input").eq(4).val(data.data.nation);
+                    $("input").eq(6).val(data.data.qqNum);
+                    $("input").eq(8).val(data.data.education);
+                    $("input").eq(10).val(data.data.salary);
+                    $("input").eq(11).val(data.data.joinPartyTime);
+                    $("input").eq(12).val(data.data.lastPayTime);
+                    $("input").eq(13).val(data.data.partyIdentity);
+                }
+            });
+            $("input").attr("disabled","");
+            $("#bj").click(function () {
+              console.log($("input").attr("disabled"));
+                if($("input").attr("disabled")=="disabled"){
+                    $("#bj").html("保存");
+                    $("input").removeAttr("disabled");
+
+
+                }else {
+                    $("#bj").html("编辑");
+
+                    $.ajax({
+                        url:"http://192.168.8.111:8081/hhdj/user/modifyInfo.do",
+                        type:"post",
+                        headers:{token:localStorage.getItem('token')},
+                        data: new FormData($('#form')[0]),
+                        processData: false,
+                        contentType: false,
+                        success: function (data) {
+                            console.log(data);
+                            $("input").attr("disabled","");
+                        }
+                    });
+                }
+
+            });
+//            $.ajax({
+//                url:"http://192.168.8.111:8081/hhdj/user/userInfo.do",
+//                type:"get",
+//                headers:{token:localStorage.getItem('token')},
+//                data: {},
+//                success: function (data) {
+//                    console.log(data);
+////            $("#list").html(xx(data));
+//
+//                }
+//            });
+
+
+</script>
+</body>
+</html>

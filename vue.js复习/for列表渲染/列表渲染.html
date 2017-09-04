@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .divider{
+        width: 200px;;
+        height: 100px;
+        background-color: yellow;
+    }
+</style>
+<body>
+<div id="app">
+<div v-for="item in message">{{item}}</div>
+    <div v-for="(item,index) in message">{{index}}-{{item}}</div>
+    <div v-for="(item,index) in aa">{{index}}-{{item.ww}}</div>
+    <ul>
+        <template v-for="item in aa">
+            <li>{{ item.ww }}</li>
+            <li class="divider"></li>
+        </template>
+    </ul>
+    <ul id="repeat-object" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <div v-for="(value, key) in object">
+        {{ key }} : {{ value }}
+    </div>
+    <span v-for="(value, key, index) in object">
+        <div>{{ index }}. {{ key }} : {{ value }}</div>
+    </span>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            message:{
+                a:[1,2,3],
+                b:[4,5,6]
+            },
+            aa:[
+                {ww:'i'},
+                {ww:'you'},
+                {ww:'love'}
+            ],
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    })
+</script>
+</body>
+</html>

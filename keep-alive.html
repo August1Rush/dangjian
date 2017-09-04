@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过keep-alive保留切换的子组件</title>
+</head>
+<body>
+<div id="a">
+<button @click="toshow">点击切子组件</button>
+    <keep-alive>
+        <compotent v-bind:is="w"></compotent>
+    </keep-alive>
+
+</div>
+<template id="first">
+    <div>第一个组件</div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#a",
+        data:{
+            w:"first"
+        },
+        methods:{
+            toshow:function () {
+                var arr=["first","second","third",""];
+                var index=arr.indexOf(this.w);
+                if (index<2){
+                    this.w=arr[index+1]
+                }else {
+                    this.w=arr[0]
+                }
+                console.log(this.$children[0]);
+            }
+        },
+        components:{
+            first:{
+                template:"#first"
+            },
+            second:{
+                template:"<div>这是第二个组件</div>"
+            },
+            third:{
+                template:"<div>这是第三个组件</div>"
+            }
+        }
+    })
+</script>
+</body>
+</html>

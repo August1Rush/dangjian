@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--当组件和混合对象有同名选项的时候，会混合成一个数组，都会被调用，并且混合对象的钩子将在组件之前调用-->
+</div>
+<script src="../js/vue.js"></script>
+<script>
+var mixin={
+    created:function () {
+        console.log('呵呵')
+    },
+    methods:{
+        foo:function () {
+            console.log('foo')
+        },
+        conflicting:function () {
+            console.log('from mixin')
+        }
+    }
+};
+var vm= new Vue({
+//    el:'#app',
+    mixins:[mixin],
+    created:function () {
+        console.log('你笑什么呢')
+    },
+    methods:{
+        bar:function () {
+            console.log('bar')
+        },
+        conflicting:function () {
+            console.log("frim self")
+        }
+    }
+});
+    vm.foo();
+vm.bar();
+vm.conflicting();
+</script>
+</body>
+</html>

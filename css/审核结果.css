@@ -1,0 +1,17 @@
+.text{
+    text-align: center;
+}
+#img{
+    vertical-align: middle;
+}
+
+.red{
+    width: 70%;
+    margin: 60px auto;
+    background-color:rgb(236,41,43);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 5px;
+}

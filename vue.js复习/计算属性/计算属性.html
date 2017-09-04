@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<p>message:{{message}}</p>
+    <p>reversed message:"{{reverseMessage}}</p>
+    <div>{{now}}</div>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+message:'hello'
+        },
+        computed:{//计算属性:会缓存，不适合性能大的开销
+            reverseMessage:function () {//这里我们声明了一个计算属性 revers
+                // edMessage 。我们提供的函数将用作属性 vm.reversedMessage 的 getter 。
+                return this.message.split("").reverse().join('')
+            },
+            now:function () {
+                return  Date.now()
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

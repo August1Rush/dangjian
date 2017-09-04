@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+    <a1></a1>
+    <a2 v-bind:a2-name="name" v-bind:a2-age="age" v-bind:a2qq="qq"></a2>
+</div>
+<template id="aa1">
+    <div>这是个组件</div>
+
+</template>
+<template id="aa2">
+    <table>
+        <tr>
+            <th colspan="2">
+                自组件数据
+            </th>
+        </tr>
+        <tr>
+            <td>a2 name</td>
+            <td>{{a2qq}}</td>
+        </tr>
+        <tr>
+            <td>a2 age</td>
+            <td>{{a2Age}}</td></tr>
+    </table>
+</template>
+<script src="../js/vue.js"></script>
+
+<!--使用script-->
+<!--<script type="text/x-template" id="aa1">-->
+<!--<div>This is a component!</div>-->
+<!--</script>-->
+
+
+<!--使用<template>标签-->
+<script>
+    Vue.component('a1',{
+        template:"#aa1",
+        data: function(){
+            return {a : 1}
+        }
+    });
+    new Vue({
+        el:".app",
+        data:{
+            name:"王二狗",
+            age:23,
+            qq:1212333
+        },
+        components:{
+            "a2":{
+                template:"#aa2",
+                props:["a2Name","a2Age","a2qq"]
+            }
+        }
+    })
+</script>
+</body>
+</html>

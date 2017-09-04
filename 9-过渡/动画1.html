@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .aa-enter-active {
+        animation: aa-in 5s;
+    }
+    .aa-leave-active {
+        animation: aa-in 10s reverse;
+    }
+    @keyframes aa-in{
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+<body>
+<div id="app">
+    <button @click="show=!show">
+        Toggle show
+    </button>
+    <transition name="aa">
+        <p v-if="show">
+            look at me
+        </p>
+    </transition>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            show:true
+        }
+    })
+</script>
+</body>
+</html>

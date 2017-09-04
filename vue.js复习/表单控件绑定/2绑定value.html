@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    请选择：<input
+            type="checkbox"
+            v-model="toggle"
+            :true-value="a"
+            :false-value="b"
+    >
+   <p>{{toggle}}</p>
+
+    <!--单选按钮-->
+   请确认 <input type="radio" v-model="pick" :value="a">
+    请选择<input type="radio" v-model="pick" :value="b">
+    <p>{{pick}}</p>
+
+    <select v-model="selected">
+        <!-- 内联对象字面量 -->
+        <option disabled value="">请选择</option>
+        <option v-bind:value="{ number: 123 }">123</option>
+    </select>
+    <p>{{selected.number}}</p>
+
+    <!-- 在 "change" 而不是 "input" 事件中更新 -->
+    <input v-model.lazy="msg" >
+    <p>{{msg}}</p>
+
+    <!--输出数字类型-->
+    <input v-model="age" type="number">
+    <p>{{age}}</p>
+    <!--过滤首位空格-->
+    <input v-model.trim="age1">
+    <p>{{age1}}</p>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            toggle:'',
+            a:'已经确认',
+            b:'还没勾选',
+            pick:"",
+            selected:"",
+            msg:'',
+            age:'',
+            age1:''
+
+        }
+    })
+</script>
+</body>
+</html>

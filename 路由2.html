@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .red{
+        background-color:red;
+        height: 100vh;
+    }
+    .yellow{
+        background-color:yellow;
+        height: 100vh;
+    }
+    .blue{
+        background-color:blue;;
+        height: 100vh;
+    }
+</style>
+<body>
+<div id="app">
+    <router-link :to="{name:'raaed',query:{id:1}}">红色</router-link>
+    <router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>
+    <!--<router-link :to="{name:'yellow',query:{id:1}}">黄色</router-link>-->
+    <router-link :to="{name:'blue',query:{id:2}}">蓝色</router-link>
+    <router-view></router-view>
+</div>
+<template id="r">
+    <div class="red">这里是红色喔</div>
+</template>
+<template id="y">
+    <div class="yellow">这里是黄色</div>
+</template>
+<template id="b">
+    <div class="blue">这路是蓝色</div>
+</template>
+<script src="js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var Red={template:"#r"};
+    var Yellow={template:"#y"};
+    var Blue={template:"#b"};
+    var routes=[
+        {
+
+            name:'raaed',
+            path:"/red1",
+            component:Red
+        },
+        {
+            name:'yellow',
+            path:"/yellow",
+            component:Yellow
+        },
+        {
+            name:"blue",
+            path:"/blue",
+            component:Blue
+        },
+        {path:"/",component:Red}
+    ];
+    var router=new VueRouter({
+        routes:routes
+    });
+    var aa=new Vue({
+        router:router,
+        el:"#app"
+    })
+</script>
+</body>
+</html>

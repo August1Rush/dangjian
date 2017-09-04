@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span>message:{{message}}</span><!--数据绑定双大括号语法-->
+    <input type="text" v-model="aa">
+    <span v-once>{{aa}}</span><!--v-once指令只能执行一次，变化无效-->
+    <span>{{aa}}</span>
+    <!--<div v-html="html"></div>&lt;!&ndash;可以输出真正的HTML&ndash;&gt;-->
+    <div :id="id">{{id}}</div><!--属性之类要加v-bind-->
+    <button :disabled="sino">按钮</button>
+    <div>{{message.split("").reverse().join("")}}</div><!--对script表达式生效-->
+
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    varapp=new Vue({
+        el:app,
+        data:{
+            aa:'你好',
+            message:'信息',
+            id:'newsId',
+            sino:false
+        }
+    })
+
+</script>
+</body>
+</html>

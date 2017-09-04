@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+.a{width: 600px;height: 600px;background-color: tan}
+        .b{width: 200px;height: 200px;background-color: #007aff;float: right}
+        .c{width: 300px;height: 300px;background-color: red;float: left}
+    </style>
+</head>
+<body>
+<input type="text"/>
+<div class="a">
+    <div class="b"></div>
+    <div class="c"></div>
+</div>
+<div id="a">dssss</div><input type="file"/>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    $.ajax({
+        url: 'http://192.168.8.111:8081/hhdj/nationComment/judgeComment.do',
+        type: 'post',
+        data: {
+        },
+        headers: {
+            token: localStorage.getItem('token')
+        },
+
+        success: function (data) {
+            console.log(data);
+            console.log(data.tbCommentUser.commentId);
+            localStorage.setItem('comment_id',data.tbCommentUser.commentId);
+            if(data.tbComment.isOpen==1){
+                $('.tiao').attr('href','不用handbar民主评议内容.html');
+            }
+            else{
+                $('.tiao').attr('href','');
+                //这里需要添加一个无法跳转时候的提示,添加一个动画的div
+                /*$('.party-organization').append('<div class="block"></div>')
+                 $('.block').text('有正在进行的民族评议')
+                 $(".block").animate({top:'250px'})*/
+            }
+
+        }
+
+    })
+</script>
+<script>
+
+////    var obj = 1;
+////    switch (obj) {							//用于判断obj相等的多个值
+////        case 1 :
+////            alert('one');
+////            break;						//break;用于防止语句的穿透
+////        case 2 :
+////            alert('two');
+////            break;
+////        case 3 :
+////            alert('three');
+////            break;
+////        default :							//相当于if语句里的else，否则的意思
+////            alert('error');}
+//
+//            var a=1;
+//            do{
+//                console.log(a);
+//                a++
+//            }while (a<=5);
+//    while (a<=10){
+//        console.log(a);
+//        a++
+//    }
+////    遍历数组
+//    var aa=[1,2,3,45,5];
+//    for(var ba in aa){
+//        console.log(aa[ba])
+//    }
+//aa.forEach(function (item,index) {
+//    console.log(index+":"+item)
+//
+//});
+//    //遍历对象
+//    var aa1={
+//        "a":"aa",
+//        "b":"bb",
+//        "c":"cc"
+//    };
+//    for(var ba1 in aa1){
+//        console.log(aa1[ba1])
+//    }
+//var iNum = 0;
+////break和continue区别
+//outermost:
+//    for (var i=0; i<10; i++) {
+//    if(i==4){
+//        break
+//    }
+//        for (var j=0; j<10; j++) {
+//            if (i == 5 && j == 5) {
+//                break outermost;
+//            }
+//            iNum++;
+//        }
+//    }
+//alert(iNum);
+////    arguments写累乘
+//    function add() {
+////    var a5=1;
+////    if(arguments=0)
+////        return 1;
+////    for (var a6=1;a6<arguments;a6++){
+////        a5*=a6;
+////        console.log(a6)
+////    }
+//    return arguments.callee;
+//
+//    }
+//    alert(add(2));
+//    //arguments.callee是指针和this类似
+//function calc(num) {
+//    if (num <= 1) {
+//        return 1;
+//    } else {
+//        return num * arguments.callee(num-1);//使用callee来执行自身
+//    }
+//}
+////作用域
+//    function a() {
+//    if(a=1)
+//        var aaa1=2
+//    }
+//var obj = {age:12};
+//alert(isNaN(obj));
+//
+//
+//function test(){
+//    console.log("2a");
+//    test=function(){
+//        console.log("2b");
+//    }
+//}
+//test();  //输出A
+//test();
+//test();
+////多维数组
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <transition>
+        <button v-if="no" key="no">no</button>
+        <button v-else key="show">show</button>
+    </transition>
+    <transition>
+        <button v-bind:key="isEditing">
+            {{ isEditing ? 'Save' : 'Edit' }}
+        </button>
+    </transition>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
+    var ve=new Vue({
+        el:'#app',
+        data:{
+            no:false,
+            isEditing:false
+        }
+    })
+</script>
+</body>
+</html>

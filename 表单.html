@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id=""></div>
+<form action="" name="as">
+    <input type="text" name="key" id="w">
+    <input type="reset" name="" value="重置">
+    <input type="hidden" name="type">
+    <!--<input type="submit" name="" value="提交">-->
+    <img src="img/登录btn.png" alt="">
+</form>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+    document.getElementsByTagName("input")[0].ondblclick=function () {
+            document.forms["as"].submit()
+    };
+    $("#w+input").css("color","red")
+</script>
+</body>
+</html>

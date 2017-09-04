@@ -1,0 +1,16 @@
+.neirong{
+    text-align: center;
+}
+.tupian{
+    display: inline-block;
+    width: 60%;
+    height: 150px;
+    background-color: red;
+    font-size: 20px;
+    color: white;
+
+}
+.zhengwen,.tupian{
+    text-align: left;
+}
+.tupian div{margin: 20px}

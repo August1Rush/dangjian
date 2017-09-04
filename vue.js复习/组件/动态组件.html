@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .red{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    .blue{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+    .yello{
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+    }
+</style>
+<body>
+<div id="app">
+    <keep-alive>
+    <component v-bind:is="w" @click.native="aa"></component>
+    </keep-alive>
+</div>
+<template id="home">
+    <div class="red">home</div>
+</template>
+<template id="posts">
+    <div class="blue">posts</div>
+</template>
+<template id="archive">
+    <div class="yello">archive</div>
+</template>
+<script src="../../js/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            w:'home'
+        },
+        components:{
+            home:{template:'#home'},
+            posts:{template:'#posts'},
+            archive:{template:'#archive'}
+        },
+        methods:{
+            aa:function () {
+                var arr=["home","posts","archive"];
+                var index=arr.indexOf(this.w);
+                if(index<2){
+                    this.w=arr[index+1];
+                }else {
+                    this.w=arr[0];
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

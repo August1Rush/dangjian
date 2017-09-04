@@ -1,0 +1,85 @@
+*{margin: 0}
+/*body{background-color: #cccccc}*/
+/*input{*/
+    /*text-align: center;*/
+    /*color: #cccccc;*/
+/*}*/
+/*.shuru{*/
+    /*/!*text-align: center;*!/*/
+    /*border: 1px solid #cccccc;*/
+    /*width: 70%;*/
+    /*margin:20px auto;*/
+/*}*/
+/*span{margin: 20px;*/
+    /*font-size: 20px;*/
+/*}*/
+/*.zhifu>div{display: inline-block;*/
+    /*/!*vertical-align: middle;*!/*/
+
+/*}*/
+/*.zhifu{vertical-align: middle;*/
+    /*padding: 20px;*/
+    /*border-top: 1px solid #cccccc;*/
+    /*margin:20px 0;*/
+/*}*/
+/*.i1{width: 50px;*/
+    /*height: 50px;*/
+    /*margin-right: 20px;*/
+/*}*/
+/*.queren{width: 20px;*/
+    /*height: 20px;*/
+    /*text-align: right;*/
+/*vertical-align: middle;*/
+/*}*/
+/*.a{margin-bottom:10px*/
+/*}*/
+/*.s{font-size: 20px}*/
+/*.a2{font-size: 16px;*/
+    /*color: #cccccc;*/
+/*}*/
+/*.anniu{width: 70%;*/
+    /*margin:auto;*/
+    /*background-color: red;*/
+    /*color: white;*/
+    /*font-size: 20px;*/
+    /*text-align: center;*/
+    /*padding: 10px;*/
+    /*border-radius: 5px;}*/
+.icon-weixin-copy{
+    color:rgb(26,250,41) ;
+}
+.icon-alipay{
+    color: rgb(0,160,233);
+}
+.fangshi{
+    padding:20px 0;
+}
+.fiex1{
+    position:fixed;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%) ;
+    background-color: red;
+    z-index: 100;
+    display: none;
+}
+.fiex2{
+    position:fixed;
+    width: 500px;
+    height: 500px;
+
+    background-color: red;
+    z-index: 100;
+    display: none;
+}
+.fiex3{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(102,102,102,0.2);
+    z-index: 80;
+    display: none;
+}
+

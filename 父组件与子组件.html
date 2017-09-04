@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <abc></abc>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var child=Vue.extend({
+        template:"<p>这是子组件</p>"
+    });
+    var parent=Vue.extend({
+       template:"<p>这是父组件</p><ab></ab>/",
+        components:{
+           ab:child
+        }
+    });
+    Vue.component(
+        "abc",parent
+    );
+    new Vue({
+        el:"#app"
+    })
+</script>
+</body>
+</html>

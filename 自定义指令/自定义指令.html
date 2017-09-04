@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div id="hook" v-demo:foo.a.b="message"></div>
+    <div id="aaa"  v-red:foo.a.b="sr" >sss</div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.directive('demo',{
+        bind:function (el,binding,vnode) {
+            var s=JSON.stringify;
+            el.innerHTML=
+                'name:'+binding.name+"<br>"+//demo
+                'value:'+s(binding.value)+"<br>"+//hello!
+            "expression:"+binding.expression+'<br>'+//message
+            'argument:'+binding.arg+'<br>'+//foo
+            'modifiers:'+s(binding.modifiers)+"<br>"//{a:true,b:true}
+//            'vnode keys:'+s(vnode)
+
+
+        }
+    });
+
+    //简写
+    Vue.directive('red',function (el,binding) {
+        el.style.backgroundColor=binding.value
+    });
+    new Vue({
+        el:"#app",
+        data:{
+            message:"hello!",
+            sr:'red'
+        }
+    })
+</script>
+</body>
+</html>

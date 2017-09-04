@@ -1,0 +1,14 @@
+
+#red{
+    float: right;
+    color: red;
+}
+.zou{
+    float: left;
+}
+.clear::after{
+    content:"";
+    display: block;
+    clear: both;
+
+}

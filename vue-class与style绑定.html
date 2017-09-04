@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .a1{
+        background-color: red;
+    }
+    .a2{
+        font-size: 30px;
+    }
+    .a3{
+        height: 50px;
+    }
+    .a4{
+        background-color: #007aff;
+    }
+    .a5{
+        background-color: yellow;
+    }
+    .a6{
+        font-size: 50px;
+    }
+
+</style>
+<body>
+<div id="app">
+    <div class="a1" v-bind:class="{'a2':isActive,a3:haha}">111</div>
+    <div class="" v-bind:class="classObject">222</div>
+    <div v-bind:class="style1">3333</div>
+    <div :class="[la,shi]">444</div>
+    <div :class="[isa?shi:'',la]">sss</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            act:"a4",
+            isActive:true,
+            haha:true,
+            is:true,
+            nu:null,
+            la:"a5",
+            shi:"a6",
+            isa:false,
+            classObject:{
+                a4:true,
+                a3:true,
+            }
+        },
+        computed:{
+            style1:function () {
+                return{
+                    a5:this.is&&!this.nu,
+                    a6:this.nu&&this.nu.type==='fatal',
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

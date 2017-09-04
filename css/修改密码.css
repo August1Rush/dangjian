@@ -1,0 +1,30 @@
+.head{
+    position: relative;
+}
+/*input{*/
+    /*border: 1px solid red!important;*/
+/*}*/
+.biaodan{
+    margin: 20px;
+}
+.biaodan input{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    width: 90%;
+    margin:20px auto;
+    height: 50px;
+    font-size: 20px;
+}
+label{
+    font-size: 20px;
+}
+.tijiao{
+    width: 40%;
+    margin: auto;
+    font-size: 16px;
+    background-color:rgb(204,0,13);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}

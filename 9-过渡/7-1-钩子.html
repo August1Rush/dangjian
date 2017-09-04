@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style>
+        #box{
+            height: 500px;
+            width: 300px;
+            border: 1px solid lightskyblue;
+            position: relative;
+            /*overflow: hidden;*/
+        }
+        .sider{
+            position: absolute;
+            top:0;
+            left:0;
+            height: 100%;
+            width: 100%;
+            background-color: lightcoral;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="box" >
+        <button @click="show=true">左右</button>
+        <transition
+                v-on:before-enter="beforeEnter"
+                v-on:enter="enter"
+                v-on:leave="leave"
+                v-bind:css="false"        >
+            <div class="sider" v-if="show">
+                <button @click="show=false">关闭</button>
+                <div>lalalfalflaflal</div>
+            </div>
+        </transition>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            show:false,
+        },
+        methods:{
+            beforeEnter: function (el) {
+                el.style.opacity = 0;
+                el.style.left ='100%';
+                el.style.backgroundColor ='blue'//定义初始过渡状态
+            },
+            enter: function (el, done) {
+                Velocity(el, { opacity: 1, fontSize: '30px' }, { duration: 300 });
+                Velocity(el, {'left': '0px' }, {duration: 1000, complete: done })//done表示enter过渡结束时效果
+            },
+            leave: function (el, done) {
+                Velocity(el, {'left': '100%' }, {duration: 1000, complete: done })
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

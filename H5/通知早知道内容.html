@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../swiper/css/swiper.min.css"/>
+<link rel="stylesheet" href="../css/xgxinwenyan.css"/>
+
+<link rel="stylesheet" href="../iconfont/iconfont.css"/>
+<link rel="stylesheet" href="../css/两学一做.css"/>
+<body>
+<div class="bar bar-header head">
+    <a class="button icon-left ion-chevron-left button-clear button-light" href="通知早知道.html"></a>
+    <h1 class="title">两学一做讨论区</h1>
+</div>
+<div class="scroll-content has-header ">
+    <div id="nei">
+    </div>
+</div>
+<script id="entry-template" type="text/x-handlebars-template">
+
+    <h2>{{title}}</h2>
+    <div>{{{content}}}</div>
+
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.0.10/handlebars.js"></script>
+<script>
+    var x = $("#entry-template").html();
+    var xx = Handlebars.compile(x);
+    $.ajax({
+        url: "http://192.168.1.110:8081/hhdj/news/newsContent.do",
+        type: "get",
+        headers:{token:localStorage.getItem('token')},
+        data: {newsId:get('newsId')},
+        success: function (data) {
+            console.log(data);
+            $("#nei").html(xx(data.data));
+
+
+        }
+    });
+    function get(key){
+        var tempUrl = location.search;       //获得网址
+        var tempStr = tempUrl.split("?")[1];  //得到?后面的那部分
+        var tempArr = tempStr.split("&");
+        var obj = {};
+        tempArr.forEach(function(item) {
+            var itemArr = item.split("=");     //将每一对键值对再按等号分开
+            obj[itemArr[0]] = itemArr[1];       //获得键所对应的值
+        });
+        return obj[key];        //返回键所对应的值
+    }
+</script>
+
+</body>
+</html>

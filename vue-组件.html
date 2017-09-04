@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<table is="abc">
+
+</table>
+    <abc></abc>
+    <abc></abc>
+    <abcd></abcd>
+    <aaa></aaa>
+
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var data={counter:0};
+var child1={template:"<div>aaaaaa</div>"};
+var child2={template:"<div>a23</div>"};
+Vue.component("abc",{
+    template:'<button v-on:click="counter += 1">{{ counter }}</button>',
+    components:{"aaa":child2},
+//        共有影响
+//        data:function () {
+//            return data
+//        }
+//        私有影响
+    data:function () {
+        return{
+            counter:0
+        }
+    }
+});
+
+new Vue({
+    el:"#app",
+    components:{
+        "abcd":child1
+    }
+});
+
+//    局部封装
+</script>
+
+
+
+</body>
+</html>

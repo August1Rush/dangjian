@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态组件:使用v-bind:is=""组件名</title>
+</head>
+<body>
+<div id="a">
+<button @click="toshow">点击让子组件显示</button>
+    <component v-bind:is="w"></component>
+</div>
+<template id="a1">
+
+</template>
+<script src="js/vue.js"></script>
+<script>
+var vm=new Vue({
+    el:"#a",
+    data:{
+        w:"first"
+    },
+    methods:{
+        toshow:function () {
+            var arr=["first","second","third",""];
+            var index=arr.indexOf(this.w);
+            if(index<2){
+                this.w=arr[index+1];
+            }else {
+                this.w=arr[0];
+            }
+        }
+    },
+    components:{
+        first:{
+            template:"<div>这是子组件1</div>"
+        },
+        second:{
+            template:"<div>这是组件2</div>"
+        },
+        third:{
+            template:"<div>这是组件3</div>"
+        }
+    }
+})
+</script>
+</body>
+</html>

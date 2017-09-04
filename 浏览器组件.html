@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="a1">
+    <abc aa="hahaha"></abc>
+    <abc aa-b="LALALA"></abc>
+    <div>
+        <input type="text" v-model="par">
+        <br>
+        <child v-bind:my-me="par"></child>
+    </div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+
+    Vue.component("abc",{
+        props:["aa","aaB"],
+        template:"<div>{{aaB}}</div>"
+    });
+
+//    局部组件
+//        var a1=new Vue({
+//            el:".a1",
+//            components:{
+//                "abc":ch
+//            }
+//        });
+        new Vue({
+            el:".a1"
+        })
+</script>
+</body>
+</html>
